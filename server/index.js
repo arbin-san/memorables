@@ -7,11 +7,12 @@ import postRoutes from './routes/posts.js';
 
 const app = express();
 
-app.use('/posts', postRoutes);
 // Middlewares
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
-app.use(cors);
+app.use(cors());
+
+app.use('/posts', postRoutes);
 
 const CONNECTION_URL = "mongodb+srv://avi:year1988@node-jwt-auth.ioz3f.mongodb.net/node-jwt-auth";
 const PORT = process.env.PORT || 5000;
